@@ -1,79 +1,64 @@
 
-import React, { useState, useEffect } from 'react';
-import { cn } from "@/lib/utils";
-import { Menu, X, Leaf } from "lucide-react";
+import React, { useState } from 'react';
+import { Leaf } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out py-4 px-6 md:px-12",
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
-      )}
-    >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a href="/" className="flex items-center space-x-2">
+    <header className="w-full py-6 bg-white z-50">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        <Link to="/" className="flex items-center space-x-2">
           <span className="text-forest-600">
             <Leaf size={28} />
           </span>
           <span className="font-display font-bold text-2xl text-forest-900">Konserva</span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <a href="/" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Beranda</a>
-          <a href="#galeri" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Galeri Satwa</a>
-          <a href="#konservasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Program Konservasi</a>
-          <a href="#edukasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Edukasi</a>
-          <a href="#tentang" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Tentang Kami</a>
+        <nav className="hidden md:flex items-center space-x-12">
+          <Link to="/" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Beranda</Link>
+          <Link to="#galeri" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Galeri</Link>
+          <Link to="#konservasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Konservasi</Link>
+          <Link to="#edukasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Edukasi</Link>
         </nav>
 
-        <div className="hidden md:block">
-          <button className="btn-primary">
-            Dukung Kami
+        <div className="hidden md:flex items-center gap-4">
+          <div className="h-6 w-12 bg-gray-200 rounded-full flex items-center p-1">
+            <div className="h-4 w-4 rounded-full bg-gray-400"></div>
+          </div>
+          <button className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
+            Mulai Sekarang
           </button>
         </div>
 
         {/* Mobile menu button */}
         <button 
           onClick={() => setIsOpen(!isOpen)} 
-          className="md:hidden focus:outline-none"
+          className="md:hidden p-2 rounded-md text-gray-800"
           aria-label={isOpen ? "Close Menu" : "Open Menu"}
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            {isOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
         </button>
       </div>
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-md animate-slide-down">
-          <div className="flex flex-col px-6 py-4 space-y-4">
-            <a href="/" className="font-medium text-gray-900 hover:text-forest-600 transition-colors py-2">Beranda</a>
-            <a href="#galeri" className="font-medium text-gray-900 hover:text-forest-600 transition-colors py-2">Galeri Satwa</a>
-            <a href="#konservasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors py-2">Program Konservasi</a>
-            <a href="#edukasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors py-2">Edukasi</a>
-            <a href="#tentang" className="font-medium text-gray-900 hover:text-forest-600 transition-colors py-2">Tentang Kami</a>
-            <button className="btn-primary w-full">
-              Dukung Kami
+        <div className="md:hidden absolute left-0 w-full bg-white shadow-md py-4">
+          <div className="flex flex-col px-6 space-y-4">
+            <Link to="/" className="font-medium text-gray-900 hover:text-forest-600 py-2">Beranda</Link>
+            <Link to="#galeri" className="font-medium text-gray-900 hover:text-forest-600 py-2">Galeri</Link>
+            <Link to="#konservasi" className="font-medium text-gray-900 hover:text-forest-600 py-2">Konservasi</Link>
+            <Link to="#edukasi" className="font-medium text-gray-900 hover:text-forest-600 py-2">Edukasi</Link>
+            <button className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full text-center font-medium">
+              Mulai Sekarang
             </button>
           </div>
         </div>

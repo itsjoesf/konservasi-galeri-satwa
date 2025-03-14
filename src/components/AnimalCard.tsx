@@ -30,13 +30,13 @@ const AnimalCard: React.FC<AnimalCardProps> = ({ animal }) => {
 
   return (
     <div 
-      className={`bg-white rounded-xl overflow-hidden shadow-md animate-card border border-gray-100 transition-all duration-300 ${showDetails ? 'md:col-span-2 md:row-span-2' : ''}`}
+      className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={animal.image}
           alt={animal.name}
-          className={`w-full h-full object-cover transition-all duration-700 blur-in ${isImageLoaded ? 'loaded scale-100' : 'scale-110'}`}
+          className={`w-full h-full object-cover transition-all duration-700 ${isImageLoaded ? 'scale-100' : 'scale-110'}`}
           onLoad={() => setIsImageLoaded(true)}
         />
         <div className="absolute top-3 left-3 flex flex-col gap-2">
@@ -83,7 +83,7 @@ const AnimalCard: React.FC<AnimalCardProps> = ({ animal }) => {
             </div>
             
             <button 
-              className="w-full mt-4 py-2 border border-forest-600 text-forest-600 rounded-md hover:bg-forest-50 transition-colors text-sm font-medium"
+              className="w-full mt-4 py-2 bg-forest-600 text-white rounded-full hover:bg-forest-700 transition-colors text-sm font-medium"
             >
               Lihat Detail Lengkap
             </button>

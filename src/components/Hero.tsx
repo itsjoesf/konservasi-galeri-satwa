@@ -1,82 +1,81 @@
 
-import React, { useEffect, useState } from 'react';
-import { ArrowRight, Shield } from 'lucide-react';
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center pt-24 overflow-hidden">
-      {/* Background Image with overlay */}
-      <div className="absolute inset-0 z-0">
-        <div 
-          className={`absolute inset-0 bg-black/40 z-10 transition-opacity duration-1000 ${isLoaded ? 'opacity-40' : 'opacity-0'}`}
-        />
-        <img 
-          src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80" 
-          alt="Hutan tropis Indonesia" 
-          className={`w-full h-full object-cover transition-transform duration-[3000ms] ${isLoaded ? 'scale-105' : 'scale-100'}`}
-        />
-      </div>
-
-      <div className="container mx-auto z-10 px-6 md:px-12">
-        <div className="max-w-3xl">
-          <div 
-            className={`transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-          >
-            <span className="chip mb-4 inline-flex items-center">
-              <Shield size={14} className="mr-1" />
-              <span>Konservasi untuk Masa Depan</span>
-            </span>
-          </div>
-          
-          <h1 
-            className={`text-4xl md:text-6xl font-bold text-white mb-6 leading-tight transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-          >
-            Melindungi Keanekaragaman Hayati Indonesia
+    <section className="py-24 md:py-32 bg-white overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="max-w-6xl mx-auto text-center mb-16">
+          <h1 className="text-5xl md:text-7xl font-display font-bold text-gray-900 mb-6 leading-tight">
+            Melindungi <span className="relative inline-block">
+              <span className="relative z-10">Masa Depan</span>
+              <svg className="absolute -bottom-2 left-0 w-full h-4 text-forest-100" viewBox="0 0 100 20" preserveAspectRatio="none">
+                <path d="M0,0 Q50,20 100,0" fill="currentColor"></path>
+              </svg>
+            </span> Satwa Langka Indonesia
           </h1>
-          
-          <p 
-            className={`text-lg md:text-xl text-white/90 mb-8 max-w-2xl transition-all duration-700 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-          >
-            Konserva hadir sebagai platform database interaktif dan edukasi tentang satwa langka Indonesia. Mari bersama menjaga warisan alam kita untuk generasi mendatang.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10">
+            Platform database interaktif dan edukasi tentang satwa langka Indonesia.
+            Mari bersama menjaga warisan alam kita untuk generasi mendatang.
           </p>
-          
-          <div 
-            className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-900 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-          >
-            <a href="#galeri" className="btn-primary flex items-center justify-center">
-              Jelajahi Galeri Satwa
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
-            <a href="#konservasi" className="btn-secondary flex items-center justify-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <button className="px-8 py-3 bg-forest-600 text-white font-medium rounded-full flex items-center gap-2 hover:bg-forest-700 transition-colors">
+              Jelajahi Galeri
+              <ArrowRight size={18} />
+            </button>
+            <button className="px-8 py-3 bg-gray-100 text-gray-800 font-medium rounded-full hover:bg-gray-200 transition-colors">
               Program Konservasi
-            </a>
+            </button>
           </div>
         </div>
-      </div>
-      
-      {/* Glass morphism stat cards */}
-      <div 
-        className={`absolute bottom-12 left-0 right-0 px-6 transition-all duration-700 delay-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-      >
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="glassmorphism p-6 rounded-lg">
-              <h3 className="text-4xl font-bold text-forest-600 mb-2">300+</h3>
-              <p className="text-gray-700">Spesies Langka Terdata</p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-gray-100 rounded-xl p-6 relative group hover:shadow-md transition-all">
+            <div className="flex items-start justify-between mb-3">
+              <div className="bg-white p-2 rounded-md inline-flex">
+                <svg className="w-6 h-6 text-forest-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+              </div>
+              <span className="text-sm text-gray-500">2023</span>
             </div>
-            <div className="glassmorphism p-6 rounded-lg">
-              <h3 className="text-4xl font-bold text-forest-600 mb-2">50+</h3>
-              <p className="text-gray-700">Program Konservasi Aktif</p>
+            <h3 className="text-2xl font-bold mb-3">Gabung Komunitas</h3>
+            <p className="text-lg font-medium text-forest-600">Bergabunglah dengan ribuan relawan konservasi</p>
+            <div className="absolute -bottom-4 -right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+              <img src="/lovable-uploads/a0844d67-e1b9-48f0-86c6-02cc9477bc3c.png" alt="Decoration" className="w-16 h-16" />
             </div>
-            <div className="glassmorphism p-6 rounded-lg">
-              <h3 className="text-4xl font-bold text-forest-600 mb-2">15+</h3>
-              <p className="text-gray-700">Tahun Pengalaman</p>
+          </div>
+
+          <div className="bg-forest-100 rounded-xl p-6 relative">
+            <div className="mb-3">
+              <h3 className="text-2xl font-bold">Spesies Terancam</h3>
+              <p className="text-gray-600">Status konservasi</p>
+            </div>
+            <div className="flex items-center justify-center">
+              <div className="text-8xl font-bold text-forest-600">300<span className="text-3xl">+</span></div>
+            </div>
+            <div className="mt-4 relative">
+              <div className="h-16 bg-forest-200/50 rounded-md grid grid-cols-5 gap-2">
+                {[1, 2, 3, 4, 5].map((_, index) => (
+                  <div key={index} className="bg-forest-200/80 rounded" />
+                ))}
+              </div>
+              <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-forest-800 rounded-full"></div>
+            </div>
+          </div>
+
+          <div className="bg-gray-200 rounded-xl overflow-hidden relative">
+            <img 
+              src="https://images.unsplash.com/photo-1591140028085-5d8acf1d1570?auto=format&fit=crop&q=80" 
+              alt="Satwa Langka" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+              <div className="bg-black/50 text-white px-4 py-2 rounded-full w-max mb-4 backdrop-blur-sm">
+                Edukasi
+              </div>
+              <h3 className="text-xl font-bold text-white">Program Edukasi dan Pelestarian Satwa</h3>
             </div>
           </div>
         </div>

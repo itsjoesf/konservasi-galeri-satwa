@@ -63,20 +63,20 @@
   }
 
   .btn-primary {
-    @apply bg-forest-600 text-white px-6 py-3 rounded-md hover:bg-forest-700 transition-all duration-300 ease-out;
+    @apply bg-forest-600 text-white px-6 py-3 rounded-full hover:bg-forest-700 transition-all duration-300 ease-out;
   }
 
   .btn-secondary {
-    @apply bg-earth-100 text-earth-900 px-6 py-3 rounded-md hover:bg-earth-200 transition-all duration-300 ease-out;
+    @apply bg-gray-100 text-gray-800 px-6 py-3 rounded-full hover:bg-gray-200 transition-all duration-300 ease-out;
   }
 
   .chip {
-    @apply bg-forest-100 text-forest-800 text-xs font-medium px-3 py-1 rounded-full;
+    @apply bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1 rounded-full;
   }
 }
 
-/* Custom animations */
-.animate-in {
+/* Animations */
+.animate-fade-in {
   animation: fadeIn 0.5s ease forwards;
 }
 
@@ -90,7 +90,22 @@
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Image effects */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Card Hover Effects */
+.hover-card {
+  transition: all 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Effects */
 .blur-in {
   filter: blur(10px);
   transition: filter 0.5s ease;
@@ -100,23 +115,15 @@
   filter: blur(0);
 }
 
-/* Page transition */
-.page-enter {
-  opacity: 0;
-  transform: translateY(20px);
+/* Button Styles */
+.btn-rounded {
+  @apply rounded-full px-6 py-2.5 font-medium transition-all duration-300;
 }
 
-.page-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
+.btn-primary-rounded {
+  @apply btn-rounded bg-forest-600 text-white hover:bg-forest-700;
 }
 
-.page-exit {
-  opacity: 1;
-}
-
-.page-exit-active {
-  opacity: 0;
-  transition: opacity 300ms;
+.btn-secondary-rounded {
+  @apply btn-rounded bg-gray-100 text-gray-800 hover:bg-gray-200;
 }

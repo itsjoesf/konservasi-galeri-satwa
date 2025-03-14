@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -6,7 +5,7 @@ import AnimalCard, { Animal } from '@/components/AnimalCard';
 import AnimalFilter from '@/components/AnimalFilter';
 import FeatureSection from '@/components/FeatureSection';
 import Footer from '@/components/Footer';
-import { ArrowRight, Globe, Shield, Calendar } from 'lucide-react';
+import { ArrowRight, Shield } from 'lucide-react';
 
 // Dummy data untuk Satwa
 const dummyAnimals: Animal[] = [
@@ -126,12 +125,14 @@ const Index = () => {
       <Navbar />
       <Hero />
       
-      <section className="section-padding" id="galeri">
-        <div className="container px-6 md:px-12">
-          <div className="flex flex-col items-center justify-center mb-12 text-center">
-            <span className="chip mb-4 animate-fade-in">Lihat dan Jelajahi</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 animate-fade-in">Galeri Satwa Langka Indonesia</h2>
-            <p className="text-lg text-gray-600 max-w-2xl animate-fade-in">
+      <section className="py-24 bg-gray-50" id="galeri">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="max-w-2xl mx-auto text-center mb-12">
+            <div className="inline-block px-4 py-1.5 bg-forest-100 rounded-full text-forest-700 font-medium text-sm mb-6">
+              Lihat dan Jelajahi
+            </div>
+            <h2 className="text-4xl font-display font-bold text-gray-900 mb-6">Galeri Satwa Langka Indonesia</h2>
+            <p className="text-lg text-gray-600">
               Telusuri keanekaragaman satwa langka di Indonesia. Filter berdasarkan lokasi, status konservasi, atau habitat untuk menemukan informasi yang Anda butuhkan.
             </p>
           </div>
@@ -144,7 +145,7 @@ const Index = () => {
             searchValue={searchValue}
           />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
             {filteredAnimals.length > 0 ? (
               filteredAnimals.map((animal) => (
                 <AnimalCard key={animal.id} animal={animal} />
@@ -158,7 +159,7 @@ const Index = () => {
           </div>
           
           <div className="mt-12 text-center">
-            <button className="btn-primary inline-flex items-center">
+            <button className="btn-primary-rounded inline-flex items-center">
               Lihat Semua Satwa
               <ArrowRight className="ml-2 h-5 w-5" />
             </button>
@@ -166,36 +167,22 @@ const Index = () => {
         </div>
       </section>
       
-      <section className="section-padding bg-earth-50" id="konservasi">
-        <div className="container px-6 md:px-12">
+      <section className="py-24 bg-white" id="konservasi">
+        <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
-              <span className="chip mb-4">Program Konservasi</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Upaya Pelestarian Satwa Langka</h2>
+              <div className="inline-block px-4 py-1.5 bg-forest-100 rounded-full text-forest-700 font-medium text-sm mb-6">
+                Program Konservasi
+              </div>
+              <h2 className="text-4xl font-display font-bold text-gray-900 mb-6">Upaya Pelestarian Satwa Langka</h2>
               <p className="text-lg text-gray-600 mb-8">
                 Konserva aktif dalam berbagai upaya pelestarian habitat dan perlindungan satwa langka Indonesia. Bersama mitra dan relawan, kami bekerja mewujudkan masa depan yang lebih baik bagi keanekaragaman hayati Indonesia.
               </p>
               
               <div className="space-y-6">
-                <div className="flex">
-                  <div className="flex-shrink-0 mr-4">
-                    <div className="bg-forest-100 p-3 rounded-full">
-                      <Globe className="h-6 w-6 text-forest-600" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Restorasi Habitat</h3>
-                    <p className="text-gray-600">
-                      Program penanaman kembali hutan dan restorasi lahan kritis untuk mengembalikan habitat alami satwa liar Indonesia.
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex">
-                  <div className="flex-shrink-0 mr-4">
-                    <div className="bg-forest-100 p-3 rounded-full">
-                      <Shield className="h-6 w-6 text-forest-600" />
-                    </div>
+                <div className="flex items-start gap-4 bg-gray-50 p-4 rounded-xl">
+                  <div className="bg-forest-100 p-3 rounded-lg flex-shrink-0">
+                    <Shield className="h-6 w-6 text-forest-600" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Perlindungan Spesies</h3>
@@ -205,11 +192,21 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="flex">
-                  <div className="flex-shrink-0 mr-4">
-                    <div className="bg-forest-100 p-3 rounded-full">
-                      <Calendar className="h-6 w-6 text-forest-600" />
-                    </div>
+                <div className="flex items-start gap-4 bg-gray-50 p-4 rounded-xl">
+                  <div className="bg-forest-100 p-3 rounded-lg flex-shrink-0">
+                    <Globe className="h-6 w-6 text-forest-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">Restorasi Habitat</h3>
+                    <p className="text-gray-600">
+                      Program penanaman kembali hutan dan restorasi lahan kritis untuk mengembalikan habitat alami satwa liar Indonesia.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4 bg-gray-50 p-4 rounded-xl">
+                  <div className="bg-forest-100 p-3 rounded-lg flex-shrink-0">
+                    <Calendar className="h-6 w-6 text-forest-600" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Pendidikan & Kesadaran</h3>
@@ -221,23 +218,25 @@ const Index = () => {
               </div>
               
               <div className="mt-8">
-                <button className="btn-primary inline-flex items-center">
+                <button className="btn-primary-rounded inline-flex items-center">
                   Pelajari Program Konservasi
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </button>
               </div>
             </div>
             
-            <div className={`relative aspect-[4/5] rounded-2xl overflow-hidden transition-all duration-700 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
+            <div className="relative rounded-xl overflow-hidden aspect-[4/5]">
               <img 
                 src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80"
                 alt="Program konservasi satwa liar"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
-                <span className="text-white text-sm uppercase tracking-wider mb-2">Dokumentasi</span>
+                <div className="bg-black/30 text-white px-4 py-2 rounded-full w-max mb-4 backdrop-blur-sm">
+                  Dokumentasi
+                </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Konservasi Harimau Sumatera di Taman Nasional Kerinci Seblat</h3>
-                <button className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-4 py-2 rounded-md transition-colors inline-flex items-center self-start">
+                <button className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-4 py-2 rounded-full transition-colors inline-flex items-center self-start">
                   Lihat Program
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </button>
