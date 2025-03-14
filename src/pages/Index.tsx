@@ -5,7 +5,7 @@ import AnimalCard, { Animal } from '@/components/AnimalCard';
 import AnimalFilter from '@/components/AnimalFilter';
 import FeatureSection from '@/components/FeatureSection';
 import Footer from '@/components/Footer';
-import { ArrowRight, Shield } from 'lucide-react';
+import { ArrowRight, Shield, Globe, Calendar } from 'lucide-react';
 
 // Dummy data untuk Satwa
 const dummyAnimals: Animal[] = [
