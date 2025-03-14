@@ -35,9 +35,6 @@ const FeatureSection = () => {
     <section className="py-24 bg-white" id="edukasi">
       <div className="container mx-auto px-6 md:px-12">
         <div className="max-w-xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1.5 bg-gray-100 rounded-full text-gray-700 font-medium text-sm mb-6">
-            Fitur Utama
-          </div>
           <h2 className="text-4xl font-display font-bold text-gray-900 mb-6">Kenapa Memilih Konserva?</h2>
           <p className="text-lg text-gray-600">
             Platform kami menyediakan informasi terlengkap dan terkini untuk mendukung upaya konservasi satwa langka Indonesia.
