@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				display: ['Montserrat', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,7 +66,33 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				forest: {
+					'50': '#f0f9f1',
+					'100': '#dcf1df',
+					'200': '#bae3c1',
+					'300': '#8ecf9a',
+					'400': '#5fb46e',
+					'500': '#3a9849',
+					'600': '#2c7e3a',
+					'700': '#266432',
+					'800': '#20502b',
+					'900': '#1c4326',
+					'950': '#0c2313',
+				},
+				earth: {
+					'50': '#f8f6f3',
+					'100': '#f0ebe4',
+					'200': '#e3d7c9',
+					'300': '#d0bda5',
+					'400': '#b9997d',
+					'500': '#a67e60',
+					'600': '#9a6e54',
+					'700': '#805746',
+					'800': '#6a483d',
+					'900': '#583d35',
+					'950': '#301f1b',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +115,31 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				fadeIn: {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				slideUp: {
+					'0%': { transform: 'translateY(100px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				slideDown: {
+					'0%': { transform: 'translateY(-100px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				pulse: {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fadeIn 0.5s ease-in-out forwards',
+				'slide-up': 'slideUp 0.5s ease-out forwards',
+				'slide-down': 'slideDown 0.5s ease-out forwards',
+				'pulse-slow': 'pulse 3s ease-in-out infinite'
 			}
 		}
 	},
