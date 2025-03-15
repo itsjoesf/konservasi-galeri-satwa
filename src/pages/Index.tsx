@@ -3,9 +3,8 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import AnimalCard, { Animal } from '@/components/AnimalCard';
 import AnimalFilter from '@/components/AnimalFilter';
-import FeatureSection from '@/components/FeatureSection';
 import Footer from '@/components/Footer';
-import { ArrowRight, Shield, Globe, Calendar } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 // Dummy data untuk Satwa
 const dummyAnimals: Animal[] = [
@@ -166,8 +165,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-      
-      <FeatureSection />
       
       <section className="section-padding" id="tentang">
         <div className="container px-6 md:px-12">
