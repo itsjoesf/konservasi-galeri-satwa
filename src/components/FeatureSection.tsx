@@ -34,13 +34,6 @@ const FeatureSection = () => {
   return (
     <section className="py-24 bg-white" id="edukasi">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="max-w-xl mx-auto text-center mb-16">
-          <h2 className="text-4xl font-display font-bold text-gray-900 mb-6">Kenapa Memilih Konserva?</h2>
-          <p className="text-lg text-gray-600">
-            Platform kami menyediakan informasi terlengkap dan terkini untuk mendukung upaya konservasi satwa langka Indonesia.
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <FeatureCard 

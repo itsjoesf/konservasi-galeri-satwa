@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -9,10 +8,7 @@ const Navbar = () => {
   return (
     <header className="w-full py-6 bg-white z-50">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="text-forest-600">
-            <Leaf size={28} />
-          </span>
+        <Link to="/" className="flex items-center">
           <span className="font-display font-bold text-2xl text-forest-900">Konserva</span>
         </Link>
 
@@ -24,10 +20,7 @@ const Navbar = () => {
           <Link to="#edukasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Edukasi</Link>
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
-          <div className="h-6 w-12 bg-gray-200 rounded-full flex items-center p-1">
-            <div className="h-4 w-4 rounded-full bg-gray-400"></div>
-          </div>
+        <div className="hidden md:flex items-center">
           <button className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
             Mulai Sekarang
           </button>
