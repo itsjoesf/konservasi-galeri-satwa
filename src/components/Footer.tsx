@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Mail, Phone, MapPin, Instagram, Twitter, Facebook, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -34,10 +35,10 @@ const Footer = () => {
             <h3 className="font-display font-semibold text-xl mb-6">Tautan</h3>
             <ul className="space-y-4">
               <li><Link to="/" className="text-gray-600 hover:text-forest-600 transition-colors">Beranda</Link></li>
-              <li><Link to="#galeri" className="text-gray-600 hover:text-forest-600 transition-colors">Galeri Satwa</Link></li>
-              <li><Link to="#konservasi" className="text-gray-600 hover:text-forest-600 transition-colors">Program Konservasi</Link></li>
-              <li><Link to="#edukasi" className="text-gray-600 hover:text-forest-600 transition-colors">Edukasi</Link></li>
-              <li><Link to="#tentang" className="text-gray-600 hover:text-forest-600 transition-colors">Tentang Kami</Link></li>
+              <li><Link to="/galeri" className="text-gray-600 hover:text-forest-600 transition-colors">Galeri Satwa</Link></li>
+              <li><Link to="/konservasi" className="text-gray-600 hover:text-forest-600 transition-colors">Program Konservasi</Link></li>
+              <li><Link to="/edukasi" className="text-gray-600 hover:text-forest-600 transition-colors">Edukasi</Link></li>
+              <li><Link to="/tentang" className="text-gray-600 hover:text-forest-600 transition-colors">Tentang Kami</Link></li>
             </ul>
           </div>
           

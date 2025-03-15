@@ -15,9 +15,10 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-12">
           <Link to="/" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Beranda</Link>
-          <Link to="#galeri" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Galeri</Link>
-          <Link to="#konservasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Konservasi</Link>
-          <Link to="#edukasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Edukasi</Link>
+          <Link to="/galeri" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Galeri</Link>
+          <Link to="/konservasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Konservasi</Link>
+          <Link to="/edukasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Edukasi</Link>
+          <Link to="/tentang" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Tentang</Link>
         </nav>
 
         <div className="hidden md:flex items-center">
@@ -44,12 +45,13 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden absolute left-0 w-full bg-white shadow-md py-4">
+        <div className="md:hidden absolute left-0 w-full bg-white shadow-md py-4 z-50">
           <div className="flex flex-col px-6 space-y-4">
             <Link to="/" className="font-medium text-gray-900 hover:text-forest-600 py-2">Beranda</Link>
-            <Link to="#galeri" className="font-medium text-gray-900 hover:text-forest-600 py-2">Galeri</Link>
-            <Link to="#konservasi" className="font-medium text-gray-900 hover:text-forest-600 py-2">Konservasi</Link>
-            <Link to="#edukasi" className="font-medium text-gray-900 hover:text-forest-600 py-2">Edukasi</Link>
+            <Link to="/galeri" className="font-medium text-gray-900 hover:text-forest-600 py-2">Galeri</Link>
+            <Link to="/konservasi" className="font-medium text-gray-900 hover:text-forest-600 py-2">Konservasi</Link>
+            <Link to="/edukasi" className="font-medium text-gray-900 hover:text-forest-600 py-2">Edukasi</Link>
+            <Link to="/tentang" className="font-medium text-gray-900 hover:text-forest-600 py-2">Tentang</Link>
             <button className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full text-center font-medium">
               Mulai Sekarang
             </button>
