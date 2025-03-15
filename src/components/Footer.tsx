@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Leaf, Mail, Phone, MapPin, Instagram, Twitter, Facebook, Youtube } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Twitter, Facebook, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -9,8 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
-            <div className="flex items-center space-x-2 mb-6">
-              <Leaf size={28} className="text-forest-600" />
+            <div className="mb-6">
               <span className="font-display font-bold text-2xl text-gray-900">Konserva</span>
             </div>
             <p className="text-gray-600 mb-6">
