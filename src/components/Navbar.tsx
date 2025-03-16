@@ -22,9 +22,9 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden md:flex items-center">
-          <button className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
+          <Link to="/galeri" className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
             Mulai Sekarang
-          </button>
+          </Link>
         </div>
 
         {/* Mobile menu button */}
@@ -52,9 +52,9 @@ const Navbar = () => {
             <Link to="/konservasi" className="font-medium text-gray-900 hover:text-forest-600 py-2">Konservasi</Link>
             <Link to="/edukasi" className="font-medium text-gray-900 hover:text-forest-600 py-2">Edukasi</Link>
             <Link to="/tentang" className="font-medium text-gray-900 hover:text-forest-600 py-2">Tentang</Link>
-            <button className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full text-center font-medium">
+            <Link to="/galeri" className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full text-center font-medium">
               Mulai Sekarang
-            </button>
+            </Link>
           </div>
         </div>
       )}
