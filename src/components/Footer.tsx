@@ -37,7 +37,7 @@ const Footer = () => {
               <li><Link to="/" className="text-gray-600 hover:text-forest-600 transition-colors">Beranda</Link></li>
               <li><Link to="/galeri" className="text-gray-600 hover:text-forest-600 transition-colors">Galeri Satwa</Link></li>
               <li><Link to="/konservasi" className="text-gray-600 hover:text-forest-600 transition-colors">Program Konservasi</Link></li>
-              <li><Link to="/edukasi" className="text-gray-600 hover:text-forest-600 transition-colors">Edukasi</Link></li>
+              <li><Link to="/artikel" className="text-gray-600 hover:text-forest-600 transition-colors">Artikel</Link></li>
               <li><Link to="/tentang" className="text-gray-600 hover:text-forest-600 transition-colors">Tentang Kami</Link></li>
             </ul>
           </div>

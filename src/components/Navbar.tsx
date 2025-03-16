@@ -17,7 +17,7 @@ const Navbar = () => {
           <Link to="/" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Beranda</Link>
           <Link to="/galeri" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Galeri</Link>
           <Link to="/konservasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Konservasi</Link>
-          <Link to="/edukasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Edukasi</Link>
+          <Link to="/artikel" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Artikel</Link>
           <Link to="/tentang" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Tentang</Link>
         </nav>
 
@@ -50,7 +50,7 @@ const Navbar = () => {
             <Link to="/" className="font-medium text-gray-900 hover:text-forest-600 py-2">Beranda</Link>
             <Link to="/galeri" className="font-medium text-gray-900 hover:text-forest-600 py-2">Galeri</Link>
             <Link to="/konservasi" className="font-medium text-gray-900 hover:text-forest-600 py-2">Konservasi</Link>
-            <Link to="/edukasi" className="font-medium text-gray-900 hover:text-forest-600 py-2">Edukasi</Link>
+            <Link to="/artikel" className="font-medium text-gray-900 hover:text-forest-600 py-2">Artikel</Link>
             <Link to="/tentang" className="font-medium text-gray-900 hover:text-forest-600 py-2">Tentang</Link>
             <Link to="/galeri" className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full text-center font-medium">
               Mulai Sekarang
