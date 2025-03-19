@@ -128,9 +128,6 @@ const Index = () => {
       <section className="py-24 bg-gray-50" id="galeri">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-2xl mx-auto text-center mb-12">
-            <div className="inline-block px-4 py-1.5 bg-forest-100 rounded-full text-forest-700 font-medium text-sm mb-6">
-              Lihat dan Jelajahi
-            </div>
             <h2 className="text-4xl font-display font-bold text-gray-900 mb-6">Galeri Satwa Langka Indonesia</h2>
             <p className="text-lg text-gray-600">
               Telusuri keanekaragaman satwa langka di Indonesia. Filter berdasarkan lokasi, status konservasi, atau habitat untuk menemukan informasi yang Anda butuhkan.
