@@ -28,6 +28,25 @@ const AnimalFilter: React.FC<AnimalFilterProps> = ({
     setOpenFilter(openFilter === filterName ? null : filterName);
   };
 
+  const closeAllFilters = () => {
+    setOpenFilter(null);
+  };
+
+  // Handle click outside to close dropdown
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.filter-dropdown-container')) {
+        closeAllFilters();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="mb-8 animate-slide-up">
       <div className="relative mb-4">
@@ -44,7 +63,7 @@ const AnimalFilter: React.FC<AnimalFilterProps> = ({
       </div>
 
       <div className="flex flex-wrap gap-3 mb-4">
-        <div className="relative">
+        <div className="relative filter-dropdown-container">
           <button 
             className={`bg-white border ${openFilter === 'location' ? 'border-forest-500' : 'border-gray-200 hover:border-gray-300'} text-gray-700 font-medium py-2 px-4 rounded-lg inline-flex items-center transition-colors`}
             onClick={() => toggleFilter('location')}
@@ -53,7 +72,7 @@ const AnimalFilter: React.FC<AnimalFilterProps> = ({
             <span>Lokasi</span>
           </button>
           {openFilter === 'location' && (
-            <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-2 z-10">
+            <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-2 z-50">
               <div className="py-1">
                 {locations.map((location) => (
                   <button
@@ -76,7 +95,7 @@ const AnimalFilter: React.FC<AnimalFilterProps> = ({
           )}
         </div>
 
-        <div className="relative">
+        <div className="relative filter-dropdown-container">
           <button 
             className={`bg-white border ${openFilter === 'status' ? 'border-forest-500' : 'border-gray-200 hover:border-gray-300'} text-gray-700 font-medium py-2 px-4 rounded-lg inline-flex items-center transition-colors`}
             onClick={() => toggleFilter('status')}
@@ -85,7 +104,7 @@ const AnimalFilter: React.FC<AnimalFilterProps> = ({
             <span>Status</span>
           </button>
           {openFilter === 'status' && (
-            <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-2 z-10">
+            <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-2 z-50">
               <div className="py-1">
                 {statuses.map((status) => (
                   <button
@@ -108,7 +127,7 @@ const AnimalFilter: React.FC<AnimalFilterProps> = ({
           )}
         </div>
 
-        <div className="relative">
+        <div className="relative filter-dropdown-container">
           <button 
             className={`bg-white border ${openFilter === 'habitat' ? 'border-forest-500' : 'border-gray-200 hover:border-gray-300'} text-gray-700 font-medium py-2 px-4 rounded-lg inline-flex items-center transition-colors`}
             onClick={() => toggleFilter('habitat')}
@@ -117,8 +136,8 @@ const AnimalFilter: React.FC<AnimalFilterProps> = ({
             <span>Habitat</span>
           </button>
           {openFilter === 'habitat' && (
-            <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-2 z-10">
-              <div className="py-1">
+            <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-2 z-50">
+              <div className="py-1 max-h-48 overflow-y-auto">
                 {habitats.map((habitat) => (
                   <button
                     key={habitat}
@@ -161,7 +180,13 @@ const AnimalFilter: React.FC<AnimalFilterProps> = ({
                 onClick={() => {
                   const newFilters = {...activeFilters};
                   delete newFilters[key];
-                  onFilterChange('', '');
+                  // Update activeFilters by removing this specific filter
+                  const updatedActiveFilters = {...activeFilters};
+                  delete updatedActiveFilters[key];
+                  // Apply the updated filters
+                  Object.entries(updatedActiveFilters).forEach(([k, v]) => {
+                    onFilterChange(k, v);
+                  });
                 }}
               >
                 <X size={14} />

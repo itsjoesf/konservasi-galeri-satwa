@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -136,15 +137,17 @@ const Index = () => {
             </p>
           </div>
           
-          <AnimalFilter
-            onSearchChange={handleSearchChange}
-            onFilterChange={handleFilterChange}
-            onFilterReset={handleFilterReset}
-            activeFilters={activeFilters}
-            searchValue={searchValue}
-          />
+          <div className="relative z-20">
+            <AnimalFilter
+              onSearchChange={handleSearchChange}
+              onFilterChange={handleFilterChange}
+              onFilterReset={handleFilterReset}
+              activeFilters={activeFilters}
+              searchValue={searchValue}
+            />
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 relative z-10">
             {filteredAnimals.length > 0 ? (
               filteredAnimals.map((animal) => (
                 <AnimalCard key={animal.id} animal={animal} />
