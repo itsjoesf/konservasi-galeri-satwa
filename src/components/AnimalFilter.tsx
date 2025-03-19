@@ -20,7 +20,7 @@ const AnimalFilter: React.FC<AnimalFilterProps> = ({
   const [openFilter, setOpenFilter] = useState<string | null>(null);
   const locations = ['Sumatra', 'Jawa', 'Kalimantan', 'Sulawesi', 'Papua', 'Bali', 'Nusa Tenggara'];
   const statuses = ['Kritis', 'Terancam', 'Rentan', 'Hampir Terancam'];
-  const habitats = ['Hutan Hujan', 'Laut', 'Pantai', 'Gunung', 'Rawa', 'Sungai', 'Savana'];
+  const habitats = ['Hutan Tropis', 'Laut', 'Pantai', 'Gunung', 'Rawa', 'Sungai', 'Savana'];
 
   const hasActiveFilters = Object.keys(activeFilters).length > 0;
 

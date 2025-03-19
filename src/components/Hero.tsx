@@ -43,9 +43,6 @@ const Hero = () => {
             </div>
             <h3 className="text-2xl font-bold mb-3">Gabung Komunitas</h3>
             <p className="text-lg font-medium text-forest-600">Bergabunglah dengan ribuan relawan konservasi</p>
-            <div className="absolute -bottom-4 -right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-              <img src="/lovable-uploads/a0844d67-e1b9-48f0-86c6-02cc9477bc3c.png" alt="Decoration" className="w-16 h-16" />
-            </div>
           </div>
 
           <div className="bg-forest-100 rounded-xl p-6 relative">
@@ -74,9 +71,9 @@ const Hero = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
               <div className="bg-black/50 text-white px-4 py-2 rounded-full w-max mb-4 backdrop-blur-sm">
-                Edukasi
+                Artikel
               </div>
-              <h3 className="text-xl font-bold text-white">Program Edukasi dan Pelestarian Satwa</h3>
+              <h3 className="text-xl font-bold text-white">Berita mengenai Pelestarian Satwa</h3>
             </div>
           </div>
         </div>

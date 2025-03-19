@@ -131,17 +131,8 @@ const Artikel = () => {
       
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="flex justify-between items-center mb-8">
-            <Link to="/" className="flex items-center text-gray-600 hover:text-forest-600 transition-colors">
-              <ArrowLeft size={20} className="mr-2" />
-              <span>Kembali ke Beranda</span>
-            </Link>
-          </div>
           
           <div className="max-w-2xl mx-auto text-center mb-12">
-            <div className="inline-block px-4 py-1.5 bg-forest-100 rounded-full text-forest-700 font-medium text-sm mb-6">
-              Berita Terkini
-            </div>
             <h2 className="text-4xl font-display font-bold text-gray-900 mb-6">Artikel & Berita</h2>
             <p className="text-lg text-gray-600">
               Kumpulan berita terbaru seputar konservasi satwa langka, lingkungan, dan berbagai upaya pelestarian alam Indonesia.
@@ -327,43 +318,7 @@ const Artikel = () => {
               </button>
             </div>
           </div>
-          
-          {/* Newsletter */}
-          <div className="mt-20">
-            <div className="max-w-4xl mx-auto bg-forest-50 rounded-xl p-8 border border-forest-100">
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-2/3 mb-6 md:mb-0 md:pr-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Dapatkan Update Berita Terbaru</h3>
-                  <p className="text-gray-600 mb-6">
-                    Berlangganan newsletter kami untuk mendapatkan berita dan artikel terbaru seputar konservasi satwa langka di Indonesia.
-                  </p>
-                  <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row">
-                    <input
-                      type="email"
-                      placeholder="Alamat email Anda"
-                      className="px-4 py-3 rounded-full sm:rounded-r-none w-full mb-2 sm:mb-0 focus:outline-none text-gray-800 border border-gray-200"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                    <button
-                      type="submit"
-                      className="bg-forest-600 hover:bg-forest-700 px-6 py-3 rounded-full sm:rounded-l-none text-white transition-colors"
-                    >
-                      Berlangganan
-                    </button>
-                  </form>
-                </div>
-                <div className="md:w-1/3">
-                  <img 
-                    src="https://images.unsplash.com/photo-1528158477878-c8012120b6e6?auto=format&fit=crop&q=80"
-                    alt="Newsletter" 
-                    className="w-full h-auto rounded-lg shadow-md"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+    
         </div>
       </section>
       

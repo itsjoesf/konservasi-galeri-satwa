@@ -185,7 +185,6 @@ const Index = () => {
             </div>
             
             <div className="order-1 lg:order-2">
-              <span className="chip mb-4">Tentang Kami</span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Misi dan Visi Konserva</h2>
               <p className="text-lg text-gray-600 mb-6">
                 Konserva didirikan pada tahun 2008 dengan tujuan melestarikan satwa langka Indonesia melalui pendekatan terpadu yang menggabungkan penelitian ilmiah, konservasi berbasis masyarakat, dan edukasi publik.

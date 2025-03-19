@@ -94,17 +94,8 @@ const ProgramKonservasi = () => {
       
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="flex justify-between items-center mb-8">
-            <Link to="/" className="flex items-center text-gray-600 hover:text-forest-600 transition-colors">
-              <ArrowLeft size={20} className="mr-2" />
-              <span>Kembali ke Beranda</span>
-            </Link>
-          </div>
           
           <div className="max-w-2xl mx-auto text-center mb-12">
-            <div className="inline-block px-4 py-1.5 bg-forest-100 rounded-full text-forest-700 font-medium text-sm mb-6">
-              Program Kami
-            </div>
             <h2 className="text-4xl font-display font-bold text-gray-900 mb-6">Program Konservasi Satwa Langka</h2>
             <p className="text-lg text-gray-600">
               Berbagai program konservasi yang aktif kami jalankan untuk melindungi satwa langka Indonesia dan habitatnya.
@@ -164,17 +155,7 @@ const ProgramKonservasi = () => {
               </div>
             ))}
           </div>
-          
-          <div className="mt-16 text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Ingin Memulai Program Konservasi Baru?</h3>
-            <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-              Kami terbuka untuk kolaborasi dengan individu, komunitas, atau organisasi yang memiliki ide program konservasi untuk satwa langka Indonesia.
-            </p>
-            <button className="btn-primary-rounded inline-flex items-center">
-              Ajukan Program Baru
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-          </div>
+        
         </div>
       </section>
       
