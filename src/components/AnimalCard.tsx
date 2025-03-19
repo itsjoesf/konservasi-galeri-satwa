@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Info, MapPin, AlertTriangle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export type Animal = {
   id: string;
@@ -82,11 +83,12 @@ const AnimalCard: React.FC<AnimalCardProps> = ({ animal }) => {
               </div>
             </div>
             
-            <button 
-              className="w-full mt-4 py-2 bg-forest-600 text-white rounded-full hover:bg-forest-700 transition-colors text-sm font-medium"
+            <Link 
+              to={`/satwa/${animal.id}`}
+              className="block w-full mt-4 py-2 bg-forest-600 text-white rounded-full hover:bg-forest-700 transition-colors text-sm font-medium text-center"
             >
               Lihat Detail Lengkap
-            </button>
+            </Link>
           </div>
         ) : (
           <p className="text-sm text-gray-600 line-clamp-2">{animal.description}</p>

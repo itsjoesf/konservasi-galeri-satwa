@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ArrowLeft, ArrowRight, CalendarDays, User, Clock, Eye } from 'lucide-react';
@@ -103,6 +103,28 @@ const categoryColors = {
 };
 
 const Artikel = () => {
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [email, setEmail] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  
+  // Filter articles by category
+  const filteredArticles = activeCategory 
+    ? articles.filter(article => article.category === activeCategory)
+    : articles;
+
+  // Handle category filter
+  const handleCategoryFilter = (category: string) => {
+    setActiveCategory(category === activeCategory ? null : category);
+    setCurrentPage(1);
+  };
+
+  // Handle newsletter subscription
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert(`Terima kasih telah berlangganan newsletter dengan email: ${email}`);
+    setEmail('');
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -127,19 +149,34 @@ const Artikel = () => {
           </div>
           
           <div className="flex flex-wrap gap-4 justify-center mb-10">
-            <button className="bg-forest-600 text-white px-4 py-2 rounded-full font-medium hover:bg-forest-700 transition-colors">
+            <button 
+              className={`${activeCategory === null ? 'bg-forest-600 text-white' : 'bg-white text-gray-700'} px-4 py-2 rounded-full font-medium hover:bg-forest-700 hover:text-white transition-colors`}
+              onClick={() => handleCategoryFilter(null)}
+            >
               Semua
             </button>
-            <button className="bg-white text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">
+            <button 
+              className={`${activeCategory === 'Konservasi' ? 'bg-forest-600 text-white' : 'bg-white text-gray-700'} px-4 py-2 rounded-full font-medium hover:bg-forest-700 hover:text-white transition-colors`}
+              onClick={() => handleCategoryFilter('Konservasi')}
+            >
               Konservasi
             </button>
-            <button className="bg-white text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">
+            <button 
+              className={`${activeCategory === 'Satwa Langka' ? 'bg-forest-600 text-white' : 'bg-white text-gray-700'} px-4 py-2 rounded-full font-medium hover:bg-forest-700 hover:text-white transition-colors`}
+              onClick={() => handleCategoryFilter('Satwa Langka')}
+            >
               Satwa Langka
             </button>
-            <button className="bg-white text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">
+            <button 
+              className={`${activeCategory === 'Lingkungan' ? 'bg-forest-600 text-white' : 'bg-white text-gray-700'} px-4 py-2 rounded-full font-medium hover:bg-forest-700 hover:text-white transition-colors`}
+              onClick={() => handleCategoryFilter('Lingkungan')}
+            >
               Lingkungan
             </button>
-            <button className="bg-white text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">
+            <button 
+              className={`${activeCategory === 'Event' ? 'bg-forest-600 text-white' : 'bg-white text-gray-700'} px-4 py-2 rounded-full font-medium hover:bg-forest-700 hover:text-white transition-colors`}
+              onClick={() => handleCategoryFilter('Event')}
+            >
               Event
             </button>
           </div>
@@ -174,7 +211,10 @@ const Artikel = () => {
                     <Clock size={16} className="mr-1" />
                     <span>10 menit baca</span>
                   </div>
-                  <button className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-3 rounded-full font-medium transition-colors inline-flex items-center">
+                  <button 
+                    onClick={() => alert("Buka artikel: Upaya Pelestarian Badak Jawa")}
+                    className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-3 rounded-full font-medium transition-colors inline-flex items-center"
+                  >
                     Baca Selengkapnya
                     <ArrowRight size={18} className="ml-2" />
                   </button>
@@ -185,7 +225,7 @@ const Artikel = () => {
           
           {/* Articles Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-            {articles.map((article) => (
+            {filteredArticles.map((article) => (
               <div 
                 key={article.id} 
                 className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
@@ -230,13 +270,13 @@ const Artikel = () => {
                   </div>
                   
                   <div className="border-t border-gray-100 mt-4 pt-4">
-                    <Link
-                      to={`/artikel/${article.id}`}
+                    <button
+                      onClick={() => alert(`Buka artikel: ${article.title}`)}
                       className="inline-flex items-center text-forest-600 font-medium hover:text-forest-700 transition-colors"
                     >
                       Baca Selengkapnya
                       <ArrowRight size={16} className="ml-1" />
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -246,15 +286,43 @@ const Artikel = () => {
           {/* Pagination */}
           <div className="flex justify-center mt-12">
             <div className="flex items-center space-x-2">
-              <button className="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-50">
+              <button 
+                className="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-50"
+                onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                disabled={currentPage === 1}
+              >
                 <ArrowLeft size={18} />
               </button>
-              <button className="w-10 h-10 bg-forest-600 text-white rounded-full flex items-center justify-center">1</button>
-              <button className="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-50">2</button>
-              <button className="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-50">3</button>
+              <button 
+                className={`w-10 h-10 ${currentPage === 1 ? 'bg-forest-600 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'} rounded-full flex items-center justify-center`}
+                onClick={() => setCurrentPage(1)}
+              >
+                1
+              </button>
+              <button 
+                className={`w-10 h-10 ${currentPage === 2 ? 'bg-forest-600 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'} rounded-full flex items-center justify-center`}
+                onClick={() => setCurrentPage(2)}
+              >
+                2
+              </button>
+              <button 
+                className={`w-10 h-10 ${currentPage === 3 ? 'bg-forest-600 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'} rounded-full flex items-center justify-center`}
+                onClick={() => setCurrentPage(3)}
+              >
+                3
+              </button>
               <span className="text-gray-500">...</span>
-              <button className="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-50">8</button>
-              <button className="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-50">
+              <button 
+                className={`w-10 h-10 ${currentPage === 8 ? 'bg-forest-600 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'} rounded-full flex items-center justify-center`}
+                onClick={() => setCurrentPage(8)}
+              >
+                8
+              </button>
+              <button 
+                className="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-50"
+                onClick={() => setCurrentPage(Math.min(8, currentPage + 1))}
+                disabled={currentPage === 8}
+              >
                 <ArrowRight size={18} />
               </button>
             </div>
@@ -269,11 +337,14 @@ const Artikel = () => {
                   <p className="text-gray-600 mb-6">
                     Berlangganan newsletter kami untuk mendapatkan berita dan artikel terbaru seputar konservasi satwa langka di Indonesia.
                   </p>
-                  <div className="flex flex-col sm:flex-row">
+                  <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row">
                     <input
                       type="email"
                       placeholder="Alamat email Anda"
                       className="px-4 py-3 rounded-full sm:rounded-r-none w-full mb-2 sm:mb-0 focus:outline-none text-gray-800 border border-gray-200"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
                     />
                     <button
                       type="submit"
@@ -281,7 +352,7 @@ const Artikel = () => {
                     >
                       Berlangganan
                     </button>
-                  </div>
+                  </form>
                 </div>
                 <div className="md:w-1/3">
                   <img 

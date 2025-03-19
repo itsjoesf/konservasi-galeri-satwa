@@ -191,7 +191,7 @@ const DetailSatwa = () => {
         <div className="container mx-auto px-6 py-24 text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Satwa tidak ditemukan</h2>
           <p className="text-gray-600 mb-8">Maaf, informasi satwa yang Anda cari tidak tersedia.</p>
-          <Link to="/galeri" className="btn-primary-rounded inline-flex items-center">
+          <Link to="/galeri" className="inline-flex items-center px-6 py-3 bg-forest-600 text-white font-medium rounded-full hover:bg-forest-700 transition-colors">
             <ArrowLeft className="mr-2 h-5 w-5" />
             Kembali ke Galeri
           </Link>
@@ -200,6 +200,14 @@ const DetailSatwa = () => {
       </div>
     );
   }
+
+  const handleDonateClick = () => {
+    alert(`Terima kasih atas keinginan Anda untuk mendukung konservasi ${animal.name}!`);
+  };
+
+  const handleAdoptClick = () => {
+    alert(`Terima kasih telah tertarik dengan program adopsi virtual untuk ${animal.name}!`);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -274,11 +282,17 @@ const DetailSatwa = () => {
               </div>
               
               <div className="flex flex-wrap gap-3">
-                <button className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-3 rounded-full flex items-center transition-colors">
+                <button 
+                  className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-3 rounded-full flex items-center transition-colors"
+                  onClick={handleDonateClick}
+                >
                   <HeartHandshake className="mr-2 h-5 w-5" />
                   Dukung Konservasi
                 </button>
-                <button className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-full flex items-center transition-colors">
+                <button 
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-full flex items-center transition-colors"
+                  onClick={handleAdoptClick}
+                >
                   <Leaf className="mr-2 h-5 w-5" />
                   Program Adopsi Virtual
                 </button>
@@ -355,7 +369,10 @@ const DetailSatwa = () => {
                 <p className="text-gray-600 mb-6">
                   Anda dapat berperan dalam upaya penyelamatan {animal.name} dengan mendukung program konservasi kami. Setiap kontribusi akan membantu melindungi habitat dan populasi {animal.name} di alam liar.
                 </p>
-                <button className="btn-primary-rounded inline-flex items-center">
+                <button 
+                  className="inline-flex items-center px-6 py-3 bg-forest-600 text-white font-medium rounded-full hover:bg-forest-700 transition-colors"
+                  onClick={handleDonateClick}
+                >
                   Donasi Sekarang
                   <HeartHandshake className="ml-2 h-5 w-5" />
                 </button>

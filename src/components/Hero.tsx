@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -20,13 +21,13 @@ const Hero = () => {
             Mari bersama menjaga warisan alam kita untuk generasi mendatang.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button className="px-8 py-3 bg-forest-600 text-white font-medium rounded-full flex items-center gap-2 hover:bg-forest-700 transition-colors">
+            <Link to="/galeri" className="px-8 py-3 bg-forest-600 text-white font-medium rounded-full flex items-center gap-2 hover:bg-forest-700 transition-colors">
               Jelajahi Galeri
               <ArrowRight size={18} />
-            </button>
-            <button className="px-8 py-3 bg-gray-100 text-gray-800 font-medium rounded-full hover:bg-gray-200 transition-colors">
+            </Link>
+            <Link to="/konservasi" className="px-8 py-3 bg-gray-100 text-gray-800 font-medium rounded-full hover:bg-gray-200 transition-colors">
               Program Konservasi
-            </button>
+            </Link>
           </div>
         </div>
 

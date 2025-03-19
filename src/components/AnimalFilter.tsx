@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Search, Filter, X } from 'lucide-react';
 
 interface AnimalFilterProps {
@@ -17,11 +17,16 @@ const AnimalFilter: React.FC<AnimalFilterProps> = ({
   activeFilters,
   searchValue
 }) => {
+  const [openFilter, setOpenFilter] = useState<string | null>(null);
   const locations = ['Sumatra', 'Jawa', 'Kalimantan', 'Sulawesi', 'Papua', 'Bali', 'Nusa Tenggara'];
   const statuses = ['Kritis', 'Terancam', 'Rentan', 'Hampir Terancam'];
   const habitats = ['Hutan Hujan', 'Laut', 'Pantai', 'Gunung', 'Rawa', 'Sungai', 'Savana'];
 
   const hasActiveFilters = Object.keys(activeFilters).length > 0;
+
+  const toggleFilter = (filterName: string) => {
+    setOpenFilter(openFilter === filterName ? null : filterName);
+  };
 
   return (
     <div className="mb-8 animate-slide-up">
@@ -39,76 +44,100 @@ const AnimalFilter: React.FC<AnimalFilterProps> = ({
       </div>
 
       <div className="flex flex-wrap gap-3 mb-4">
-        <div className="relative group">
-          <button className="bg-white border border-gray-200 hover:border-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg inline-flex items-center transition-colors">
+        <div className="relative">
+          <button 
+            className={`bg-white border ${openFilter === 'location' ? 'border-forest-500' : 'border-gray-200 hover:border-gray-300'} text-gray-700 font-medium py-2 px-4 rounded-lg inline-flex items-center transition-colors`}
+            onClick={() => toggleFilter('location')}
+          >
             <Filter size={16} className="mr-2" />
             <span>Lokasi</span>
           </button>
-          <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
-            <div className="py-1">
-              {locations.map((location) => (
-                <button
-                  key={location}
-                  className={`block px-4 py-2 text-sm rounded-md w-full text-left ${
-                    activeFilters.location === location
-                      ? 'bg-forest-100 text-forest-800'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
-                  onClick={() => onFilterChange('location', location)}
-                >
-                  {location}
-                </button>
-              ))}
+          {openFilter === 'location' && (
+            <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-2 z-10">
+              <div className="py-1">
+                {locations.map((location) => (
+                  <button
+                    key={location}
+                    className={`block px-4 py-2 text-sm rounded-md w-full text-left ${
+                      activeFilters.location === location
+                        ? 'bg-forest-100 text-forest-800'
+                        : 'text-gray-700 hover:bg-gray-100'
+                    }`}
+                    onClick={() => {
+                      onFilterChange('location', location);
+                      setOpenFilter(null);
+                    }}
+                  >
+                    {location}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
-        <div className="relative group">
-          <button className="bg-white border border-gray-200 hover:border-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg inline-flex items-center transition-colors">
+        <div className="relative">
+          <button 
+            className={`bg-white border ${openFilter === 'status' ? 'border-forest-500' : 'border-gray-200 hover:border-gray-300'} text-gray-700 font-medium py-2 px-4 rounded-lg inline-flex items-center transition-colors`}
+            onClick={() => toggleFilter('status')}
+          >
             <Filter size={16} className="mr-2" />
             <span>Status</span>
           </button>
-          <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
-            <div className="py-1">
-              {statuses.map((status) => (
-                <button
-                  key={status}
-                  className={`block px-4 py-2 text-sm rounded-md w-full text-left ${
-                    activeFilters.status === status
-                      ? 'bg-forest-100 text-forest-800'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
-                  onClick={() => onFilterChange('status', status)}
-                >
-                  {status}
-                </button>
-              ))}
+          {openFilter === 'status' && (
+            <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-2 z-10">
+              <div className="py-1">
+                {statuses.map((status) => (
+                  <button
+                    key={status}
+                    className={`block px-4 py-2 text-sm rounded-md w-full text-left ${
+                      activeFilters.status === status
+                        ? 'bg-forest-100 text-forest-800'
+                        : 'text-gray-700 hover:bg-gray-100'
+                    }`}
+                    onClick={() => {
+                      onFilterChange('status', status);
+                      setOpenFilter(null);
+                    }}
+                  >
+                    {status}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
-        <div className="relative group">
-          <button className="bg-white border border-gray-200 hover:border-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg inline-flex items-center transition-colors">
+        <div className="relative">
+          <button 
+            className={`bg-white border ${openFilter === 'habitat' ? 'border-forest-500' : 'border-gray-200 hover:border-gray-300'} text-gray-700 font-medium py-2 px-4 rounded-lg inline-flex items-center transition-colors`}
+            onClick={() => toggleFilter('habitat')}
+          >
             <Filter size={16} className="mr-2" />
             <span>Habitat</span>
           </button>
-          <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
-            <div className="py-1">
-              {habitats.map((habitat) => (
-                <button
-                  key={habitat}
-                  className={`block px-4 py-2 text-sm rounded-md w-full text-left ${
-                    activeFilters.habitat === habitat
-                      ? 'bg-forest-100 text-forest-800'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
-                  onClick={() => onFilterChange('habitat', habitat)}
-                >
-                  {habitat}
-                </button>
-              ))}
+          {openFilter === 'habitat' && (
+            <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-2 z-10">
+              <div className="py-1">
+                {habitats.map((habitat) => (
+                  <button
+                    key={habitat}
+                    className={`block px-4 py-2 text-sm rounded-md w-full text-left ${
+                      activeFilters.habitat === habitat
+                        ? 'bg-forest-100 text-forest-800'
+                        : 'text-gray-700 hover:bg-gray-100'
+                    }`}
+                    onClick={() => {
+                      onFilterChange('habitat', habitat);
+                      setOpenFilter(null);
+                    }}
+                  >
+                    {habitat}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {hasActiveFilters && (
