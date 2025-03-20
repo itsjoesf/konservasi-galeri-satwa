@@ -1,9 +1,11 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ArrowLeft, ArrowRight, Users, Award, Target, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 
 // Tipe data untuk anggota tim
 type TeamMember = {
@@ -109,6 +111,13 @@ const partners: Partner[] = [
 ];
 
 const TentangKami = () => {
+  const [activePartnerType, setActivePartnerType] = useState<string | null>(null);
+  
+  // Filter partners by type or show all if no filter
+  const filteredPartners = activePartnerType 
+    ? partners.filter(partner => partner.type === activePartnerType)
+    : partners;
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -182,6 +191,245 @@ const TentangKami = () => {
               </div>
             </div>
           
+          </div>
+        </div>
+      </section>
+      
+      {/* Tim Kami Section */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-display font-bold text-gray-900 mb-6">
+                Tim Kami
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Konserva memiliki tim yang berdedikasi dan berpengalaman dalam berbagai bidang konservasi satwa liar dan pengelolaan habitat.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {teamMembers.map((member) => (
+                <div 
+                  key={member.id} 
+                  className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group"
+                >
+                  <div className="aspect-w-3 aspect-h-4 relative overflow-hidden">
+                    <img 
+                      src={member.image} 
+                      alt={member.name} 
+                      className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-0 p-6 text-white">
+                        <p className="text-sm line-clamp-4">{member.bio}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
+                    <p className="text-forest-600 mb-3">{member.position}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Mitra Kami Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-display font-bold text-gray-900 mb-6">
+                Mitra Kami
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Konserva bekerja sama dengan berbagai institusi pemerintah, organisasi non-pemerintah, institusi akademik, dan sektor swasta untuk mencapai tujuan konservasi bersama.
+              </p>
+            </div>
+            
+            <Tabs defaultValue="semua" className="w-full mb-12">
+              <div className="flex justify-center">
+                <TabsList className="bg-white p-1 border border-gray-200 rounded-full mb-8">
+                  <TabsTrigger 
+                    value="semua" 
+                    className="rounded-full px-6 py-2 data-[state=active]:bg-forest-600 data-[state=active]:text-white"
+                    onClick={() => setActivePartnerType(null)}
+                  >
+                    Semua
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="pemerintah" 
+                    className="rounded-full px-6 py-2 data-[state=active]:bg-forest-600 data-[state=active]:text-white"
+                    onClick={() => setActivePartnerType('Pemerintah')}
+                  >
+                    Pemerintah
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="ngo" 
+                    className="rounded-full px-6 py-2 data-[state=active]:bg-forest-600 data-[state=active]:text-white"
+                    onClick={() => setActivePartnerType('NGO')}
+                  >
+                    NGO
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="akademik" 
+                    className="rounded-full px-6 py-2 data-[state=active]:bg-forest-600 data-[state=active]:text-white"
+                    onClick={() => setActivePartnerType('Akademik')}
+                  >
+                    Akademik
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="korporasi" 
+                    className="rounded-full px-6 py-2 data-[state=active]:bg-forest-600 data-[state=active]:text-white"
+                    onClick={() => setActivePartnerType('Korporasi')}
+                  >
+                    Korporasi
+                  </TabsTrigger>
+                </TabsList>
+              </div>
+              
+              <TabsContent value="semua" className="mt-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filteredPartners.map((partner) => (
+                    <div 
+                      key={partner.id} 
+                      className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all p-6 flex flex-col items-center text-center"
+                    >
+                      <div className="w-28 h-28 rounded-full overflow-hidden mb-6 border-4 border-gray-100">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">{partner.name}</h3>
+                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium
+                        ${partner.type === 'Pemerintah' ? 'bg-blue-100 text-blue-800' : ''}
+                        ${partner.type === 'NGO' ? 'bg-green-100 text-green-800' : ''}
+                        ${partner.type === 'Akademik' ? 'bg-yellow-100 text-yellow-800' : ''}
+                        ${partner.type === 'Korporasi' ? 'bg-purple-100 text-purple-800' : ''}
+                      `}>
+                        {partner.type}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+              <TabsContent value="pemerintah" className="mt-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filteredPartners.map((partner) => (
+                    <div 
+                      key={partner.id} 
+                      className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all p-6 flex flex-col items-center text-center"
+                    >
+                      <div className="w-28 h-28 rounded-full overflow-hidden mb-6 border-4 border-gray-100">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">{partner.name}</h3>
+                      <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                        {partner.type}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+              <TabsContent value="ngo" className="mt-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filteredPartners.map((partner) => (
+                    <div 
+                      key={partner.id} 
+                      className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all p-6 flex flex-col items-center text-center"
+                    >
+                      <div className="w-28 h-28 rounded-full overflow-hidden mb-6 border-4 border-gray-100">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">{partner.name}</h3>
+                      <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                        {partner.type}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+              <TabsContent value="akademik" className="mt-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filteredPartners.map((partner) => (
+                    <div 
+                      key={partner.id} 
+                      className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all p-6 flex flex-col items-center text-center"
+                    >
+                      <div className="w-28 h-28 rounded-full overflow-hidden mb-6 border-4 border-gray-100">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">{partner.name}</h3>
+                      <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                        {partner.type}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+              <TabsContent value="korporasi" className="mt-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filteredPartners.map((partner) => (
+                    <div 
+                      key={partner.id} 
+                      className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all p-6 flex flex-col items-center text-center"
+                    >
+                      <div className="w-28 h-28 rounded-full overflow-hidden mb-6 border-4 border-gray-100">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">{partner.name}</h3>
+                      <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                        {partner.type}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </div>
+      </section>
+      
+      {/* CTA Section */}
+      <section className="py-24 bg-forest-600 text-white">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-display font-bold mb-6">
+              Bergabunglah dengan Misi Konservasi Kami
+            </h2>
+            <p className="text-lg text-white/90 mb-8">
+              Anda dapat menjadi bagian dari upaya pelestarian satwa langka Indonesia melalui berbagai cara, mulai dari relawan lapangan, pendidikan, hingga pendanaan program konservasi.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button className="bg-white text-forest-700 hover:bg-gray-100 px-8 py-6 text-base rounded-full">
+                Hubungi Kami
+              </Button>
+              <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white/10 px-8 py-6 text-base rounded-full">
+                Lihat Program Konservasi
+              </Button>
+            </div>
           </div>
         </div>
       </section>
