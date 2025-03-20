@@ -362,30 +362,6 @@ const DetailSatwa = () => {
             </div>
           </div>
           
-          <div className="bg-forest-50 rounded-xl p-8 border border-forest-100">
-            <div className="flex flex-col md:flex-row items-center">
-              <div className="md:w-2/3 mb-6 md:mb-0 md:pr-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Dukung Konservasi {animal.name}</h3>
-                <p className="text-gray-600 mb-6">
-                  Anda dapat berperan dalam upaya penyelamatan {animal.name} dengan mendukung program konservasi kami. Setiap kontribusi akan membantu melindungi habitat dan populasi {animal.name} di alam liar.
-                </p>
-                <button 
-                  className="inline-flex items-center px-6 py-3 bg-forest-600 text-white font-medium rounded-full hover:bg-forest-700 transition-colors"
-                  onClick={handleDonateClick}
-                >
-                  Donasi Sekarang
-                  <HeartHandshake className="ml-2 h-5 w-5" />
-                </button>
-              </div>
-              <div className="md:w-1/3">
-                <img 
-                  src={animalDetail.images[1]} 
-                  alt={animal.name} 
-                  className="w-full h-auto rounded-lg shadow-md"
-                />
-              </div>
-            </div>
-          </div>
         </div>
       </section>
       
