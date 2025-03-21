@@ -1,9 +1,15 @@
 
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  
+  // Function to check if the current path matches the link
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
 
   return (
     <header className="w-full py-6 bg-white z-50">
@@ -14,11 +20,75 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-12">
-          <Link to="/" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Beranda</Link>
-          <Link to="/galeri" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Galeri</Link>
-          <Link to="/konservasi" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Konservasi</Link>
-          <Link to="/artikel" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Artikel</Link>
-          <Link to="/tentang" className="font-medium text-gray-900 hover:text-forest-600 transition-colors">Tentang</Link>
+          <Link 
+            to="/" 
+            className={`font-medium transition-colors relative ${
+              isActive('/') 
+                ? 'text-forest-600' 
+                : 'text-gray-900 hover:text-forest-600'
+            }`}
+          >
+            Beranda
+            {isActive('/') && (
+              <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-forest-600 rounded-full" />
+            )}
+          </Link>
+          
+          <Link 
+            to="/galeri" 
+            className={`font-medium transition-colors relative ${
+              isActive('/galeri') 
+                ? 'text-forest-600' 
+                : 'text-gray-900 hover:text-forest-600'
+            }`}
+          >
+            Galeri
+            {isActive('/galeri') && (
+              <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-forest-600 rounded-full" />
+            )}
+          </Link>
+          
+          <Link 
+            to="/konservasi" 
+            className={`font-medium transition-colors relative ${
+              isActive('/konservasi') 
+                ? 'text-forest-600' 
+                : 'text-gray-900 hover:text-forest-600'
+            }`}
+          >
+            Konservasi
+            {isActive('/konservasi') && (
+              <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-forest-600 rounded-full" />
+            )}
+          </Link>
+          
+          <Link 
+            to="/artikel" 
+            className={`font-medium transition-colors relative ${
+              isActive('/artikel') 
+                ? 'text-forest-600' 
+                : 'text-gray-900 hover:text-forest-600'
+            }`}
+          >
+            Artikel
+            {isActive('/artikel') && (
+              <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-forest-600 rounded-full" />
+            )}
+          </Link>
+          
+          <Link 
+            to="/tentang" 
+            className={`font-medium transition-colors relative ${
+              isActive('/tentang') 
+                ? 'text-forest-600' 
+                : 'text-gray-900 hover:text-forest-600'
+            }`}
+          >
+            Tentang
+            {isActive('/tentang') && (
+              <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-forest-600 rounded-full" />
+            )}
+          </Link>
         </nav>
 
         <div className="hidden md:flex items-center">
@@ -47,11 +117,61 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden absolute left-0 w-full bg-white shadow-md py-4 z-50">
           <div className="flex flex-col px-6 space-y-4">
-            <Link to="/" className="font-medium text-gray-900 hover:text-forest-600 py-2">Beranda</Link>
-            <Link to="/galeri" className="font-medium text-gray-900 hover:text-forest-600 py-2">Galeri</Link>
-            <Link to="/konservasi" className="font-medium text-gray-900 hover:text-forest-600 py-2">Konservasi</Link>
-            <Link to="/artikel" className="font-medium text-gray-900 hover:text-forest-600 py-2">Artikel</Link>
-            <Link to="/tentang" className="font-medium text-gray-900 hover:text-forest-600 py-2">Tentang</Link>
+            <Link 
+              to="/" 
+              className={`font-medium transition-colors py-2 ${
+                isActive('/') 
+                  ? 'text-forest-600 border-l-4 border-forest-600 pl-2' 
+                  : 'text-gray-900 hover:text-forest-600'
+              }`}
+            >
+              Beranda
+            </Link>
+            
+            <Link 
+              to="/galeri" 
+              className={`font-medium transition-colors py-2 ${
+                isActive('/galeri') 
+                  ? 'text-forest-600 border-l-4 border-forest-600 pl-2' 
+                  : 'text-gray-900 hover:text-forest-600'
+              }`}
+            >
+              Galeri
+            </Link>
+            
+            <Link 
+              to="/konservasi" 
+              className={`font-medium transition-colors py-2 ${
+                isActive('/konservasi') 
+                  ? 'text-forest-600 border-l-4 border-forest-600 pl-2' 
+                  : 'text-gray-900 hover:text-forest-600'
+              }`}
+            >
+              Konservasi
+            </Link>
+            
+            <Link 
+              to="/artikel" 
+              className={`font-medium transition-colors py-2 ${
+                isActive('/artikel') 
+                  ? 'text-forest-600 border-l-4 border-forest-600 pl-2' 
+                  : 'text-gray-900 hover:text-forest-600'
+              }`}
+            >
+              Artikel
+            </Link>
+            
+            <Link 
+              to="/tentang" 
+              className={`font-medium transition-colors py-2 ${
+                isActive('/tentang') 
+                  ? 'text-forest-600 border-l-4 border-forest-600 pl-2' 
+                  : 'text-gray-900 hover:text-forest-600'
+              }`}
+            >
+              Tentang
+            </Link>
+            
             <Link to="/galeri" className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full text-center font-medium">
               Mulai Sekarang
             </Link>
