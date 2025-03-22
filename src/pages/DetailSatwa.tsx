@@ -12,7 +12,7 @@ const dummyAnimals: Animal[] = [
     id: '1',
     name: 'Orangutan Kalimantan',
     latinName: 'Pongo pygmaeus',
-    image: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80',
+    image: '/images/orangutan.jpg',
     status: 'Kritis',
     habitat: 'Hutan Hujan',
     location: 'Kalimantan',
